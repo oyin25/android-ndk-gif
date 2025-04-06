@@ -27,15 +27,23 @@ android {
             minifyEnabled false
         }
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            from components.release
-            groupId = 'com.github.oyin25'
-            artifactId = 'androidndkgif'
-            version = '0.3.3'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.oyin25'
+                artifactId = 'androidndkgif'
+                version = '0.3.3'
+            }
         }
     }
 }
